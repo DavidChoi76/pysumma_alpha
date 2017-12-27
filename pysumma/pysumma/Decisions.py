@@ -277,3 +277,4 @@ class Decisions:
 		fileopen = open(filepath, 'wt')
 		for line in selectlines:
 			fileopen.write(line)
+		return line
