@@ -25,7 +25,7 @@ setup(name='pysumma',
       author_email = 'yc5ef@virginia.edu',
       license = 'MIT',
       packages=['pysumma'],
-      setup_requires=['pytest-runner'],
+      setup_requires=['pytest-runner', 'xarray'],
       tests_require=['pytest'],
       cmdclass = {'test': PyTest})
       #...,)

@@ -1,3 +1,4 @@
+setup.cfg
 setup.py
 pysumma/Decisions.py
 pysumma/Execute.py

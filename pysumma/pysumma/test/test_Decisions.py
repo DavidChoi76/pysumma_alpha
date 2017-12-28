@@ -1,13 +1,13 @@
 from pysumma.pysumma.Decisions import Decisions
 
-path = 'D:\\pysumma\\pysumma_alpha\\pysumma\\pysumma\\pysumma\\'
+path = 'D:\\pysumma\\pysumma_alpha0\\pysumma\\pysumma\\'
 filename = 'Decision.txt'
 
 Decisionfile = Decisions(path, filename)
 selectlines = Decisionfile.OpenRead()
 
 def test_OpenRead():
-    path = 'D:\\pysumma\\pysumma_alpha\\pysumma\\pysumma\\pysumma\\'
+    path = 'D:\\pysumma\\pysumma_alpha0\\pysumma\\pysumma\\'
     filename = 'Decision.txt'
     Decisionfile = Decisions(path, filename)
     selectlines = Decisionfile.OpenRead()
