@@ -25,5 +25,20 @@ class test_decisions_class(unittest.TestCase):
         new = soil_cat_dataset.value
         self.assertEqual(new, 'ROSETTA')
 
+    def test_GetGroundwaterParameterization(self):
+        ground_para = self.Decisionfile.groundwatr
+        self.assertEqual('noXplict', ground_para.value)
+        self.assertEqual('groundwatr', ground_para.name)
+        self.assertEqual('choice of groundwater parameterization', ground_para.description)
+        self.assertEqual(['qTopmodl', 'bigBuckt', 'noXplict'], ground_para.options)
+
+    def test_SetGroundwaterParameterization(self):
+        ground_para = self.Decisionfile.groundwatr
+        old = ground_para.value
+        self.assertEqual(old, 'noXplict')
+        ground_para.value = 'qTopmodl'
+        new = ground_para.value
+        self.assertEqual(new, 'qTopmodl')
+
 if __name__ == '__main__':
     unittest.main()
