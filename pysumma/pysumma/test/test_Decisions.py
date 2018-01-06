@@ -12,32 +12,32 @@ class test_decisions_class(unittest.TestCase):
 
     def test_GetSoilCategoryDataset(self):
         soil_cat_dataset = self.Decisionfile.soilCatTbl
-        self.assertEqual('STAS', soil_cat_dataset.value)
-        self.assertEqual('soilCatTbl', soil_cat_dataset.name)
-        self.assertEqual('soil-category dateset', soil_cat_dataset.description)
+        self.assertEqual('soilCatTbl', soil_cat_dataset.method)
+        self.assertEqual('STAS', soil_cat_dataset.option)
         self.assertEqual(['STAS', 'STAS-RUC', 'ROSETTA'], soil_cat_dataset.options)
+        self.assertEqual('soil-category dateset', soil_cat_dataset.description)
 
     def test_SetSoilCategoryDataset(self):
         soil_cat_dataset = self.Decisionfile.soilCatTbl
-        old = soil_cat_dataset.value
+        old = soil_cat_dataset.option
         self.assertEqual(old, 'STAS')
-        soil_cat_dataset.value = 'ROSETTA'
-        new = soil_cat_dataset.value
+        soil_cat_dataset.option = 'ROSETTA'
+        new = soil_cat_dataset.option
         self.assertEqual(new, 'ROSETTA')
 
     def test_GetGroundwaterParameterization(self):
         ground_para = self.Decisionfile.groundwatr
-        self.assertEqual('noXplict', ground_para.value)
-        self.assertEqual('groundwatr', ground_para.name)
-        self.assertEqual('choice of groundwater parameterization', ground_para.description)
+        self.assertEqual('groundwatr', ground_para.method)
+        self.assertEqual('noXplict', ground_para.option)
         self.assertEqual(['qTopmodl', 'bigBuckt', 'noXplict'], ground_para.options)
+        self.assertEqual('choice of groundwater parameterization', ground_para.description)
 
     def test_SetGroundwaterParameterization(self):
         ground_para = self.Decisionfile.groundwatr
-        old = ground_para.value
+        old = ground_para.option
         self.assertEqual(old, 'noXplict')
-        ground_para.value = 'qTopmodl'
-        new = ground_para.value
+        ground_para.option = 'qTopmodl'
+        new = ground_para.option
         self.assertEqual(new, 'qTopmodl')
 
 if __name__ == '__main__':
