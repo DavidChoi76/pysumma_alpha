@@ -1,5 +1,5 @@
 # pySUMMA
-
+-----
 **Python Wrapper for SUMMA (Structure for Unifying Multiple Modeling Alternatives)**
 
 ## Overview
@@ -9,7 +9,7 @@
 
 
 ## Goals
------
+
 **pySUMMA is intended to provide
 
  - Get and set model parameters (working)
