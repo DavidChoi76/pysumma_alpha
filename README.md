@@ -29,31 +29,47 @@
 
     D_file = Decisions('D:\\pysumma\\pysumma_alpha0\\pysumma\\pysumma\\', 'Decision.txt')  
 
-**3.)**  make attribute for (3) soil category dataset  
+**3.)**  make attribute for (01) simulation start time  
+
+    sim_start_time = D_file.simulStart
+
+**4.)**  get default date_time
+
+    sim_start_time.date_time
+
+**5.)**  set simulation start time
+
+    sim_start_time.date_time = "'2010-11-15 13:00'"
+
+**6.)**  write simulation start time in Decision.txt
+
+    sim_start_time.date_time
+
+**7.)**  make attribute for (03) soil category dataset  
 
     soil_cat_dataset = D_file.soilCatTbl
 
-**4.)**  get abstrat method name (first content of each lines)
+**8.)**  get abstrat method name (first content of each lines)
 
     soil_cat_dataset.method
 
-**5.)**  get default option in Decision.txt  (second content of each lines)
+**9.)**  get default option in Decision.txt  (second content of each lines)
 
     soil_cat_dataset.option
 
-**6.)**  get available options for each method
+**10.)**  get available options for each method
 
     soil_cat_dataset.options
 
-**7.)**  get description(full_name) of each method
+**11.)**  get description(full_name) of each method
 
     soil_cat_dataset.num_and_descrip
 
-**8.)**  selected option
+**12.)**  selected option
 
     soil_cat_dataset.option = 'STAR-RUC'
 
-**9.)**  write selected option in Decision.txt
+**13.)**  write selected option in Decision.txt
 
     soil_cat_dataset.option
 
