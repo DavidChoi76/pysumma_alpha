@@ -1,5 +1,5 @@
 # pySUMMA
------
+
 **Python Wrapper for SUMMA (Structure for Unifying Multiple Modeling Alternatives)**
 
 ## Overview
@@ -10,12 +10,12 @@
 
 ## Goals
 
-**pySUMMA is intended to provide
+**pySUMMA is intended to provide**
 
  - Get and set model parameters (working)
  - Run simulations (working)
  - Visualize outputs (working)
- - Automate model calibration or sensitivity studies (working)**
+ - Automate model calibration or sensitivity studies (working)
 
 ## Examples:
 
@@ -58,14 +58,14 @@
     soil_cat_dataset.option
 
 ## Bugs
-**Our issue tracker is at https://github.com/DavidChoi76/pysumma_alpha0/issues.
+  Our issue tracker is at https://github.com/DavidChoi76/pysumma_alpha0/issues.
   Please report any bugs that you find.  Or, even better, fork the repository on
   GitHub and create a pull request.  All changes are welcome, big or small, and we
   will help you make the pull request if you are new to git
-  (just ask on the issue).**
+  (just ask on the issue).
 
 ## License
-**Distributed with a MIT license; see LICENSE.txt::
+  Distributed with a MIT license; see LICENSE.txt::
 
-   Copyright (C) 2017 pySUMMA Developers
-   YoungDon Choi <yc5ef@virginia.edu>**
+  Copyright (C) 2017 pySUMMA Developers
+  YoungDon Choi <yc5ef@virginia.edu>
