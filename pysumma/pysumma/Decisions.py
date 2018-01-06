@@ -3,6 +3,8 @@ class Decisions:
         self.path = path
         self.filename = filename
         self.filepath = self.path+self.filename
+        self.simulStart = options('simulStart', self.filepath)
+        self.simulFinsh = options('simulFinsh', self.filepath)
         self.soilCatTbl = options('soilCatTbl', self.filepath)
         self.vegeParTbl = options('vegeParTbl', self.filepath)
         self.soilStress = options('soilStress', self.filepath)
@@ -49,6 +51,12 @@ class options:
             if line.split()[0] == self.method:
                 return line.split()[1].strip()
 
+    def get_default_date_time(self):
+        for line in self.text:
+            if line.split()[0] == self.method:
+                date_time = line.split()[1] +' '+ line.split()[2]
+                return date_time
+
     def get_description(self):
         for line in self.text:
             if line.split()[0] == self.method:
@@ -59,7 +67,6 @@ class options:
                 return self.num_and_descrip
 
     def get_option(self):
-        #dec = self.description
         start_line = 43
         options_list = []
         for num, line in enumerate(self.text[start_line:]):
@@ -77,6 +84,12 @@ class options:
                 self.text[index] = line.replace(self.option, new_option, 1)
         self.edit_save()
 
+    def wrt_date_time(self, method, new_date_time):
+        for index, line in enumerate(self.text):
+            if line.startswith(method):
+                self.text[index] = line.replace(self.date_time, new_date_time, 1)
+        self.edit_save()
+
     def edit_save(self):
         fileopen = open(self.filepath, 'wt')
         for line in self.text:
@@ -89,3 +102,11 @@ class options:
     @option.setter
     def option(self, new_option):
         self.wrt_option(self.method, new_option)
+
+    @property
+    def date_time(self):
+        return self.get_default_date_time()
+
+    @date_time.setter
+    def date_time(self, new_date_time):
+        self.wrt_date_time(self.method, new_date_time)
