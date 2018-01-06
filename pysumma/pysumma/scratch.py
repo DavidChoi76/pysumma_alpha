@@ -1,19 +1,32 @@
 from pysumma.pysumma.Decisions import Decisions
-from pysumma.pysumma.Methods import Methods, Selections, Descriptions
 
 D_file = Decisions('D:\\pysumma\\pysumma_alpha0\\pysumma\\pysumma\\', 'Decision.txt')
 
-print(Methods[0], Selections[0], Descriptions[0])
+soil_cat_dataset = D_file.soilCatTbl
 
-method = Methods[0]
-selection = Selections[0][2]
-description = Descriptions[0]
+print(soil_cat_dataset.method)
+print(soil_cat_dataset.option)
+print(soil_cat_dataset.options)
+print(soil_cat_dataset.num_and_descrip)
 
-#print(method.split()[0])
-Selection = Selections[0][2]
 
-print(D_file.get_attribute(method))
-D_file.wrt_attribute(method, Selection)
+soil_cat_dataset.option = 'STAR-RUC'
+
+soil_cat_dataset.option
+
+# D_file = Decisions('D:\\pysumma\\pysumma_alpha0\\pysumma\\pysumma\\', 'Decision.txt')
+#
+# print(Methods[0], Selections[0], Descriptions[0])
+#
+# method = Methods[0]
+# selection = Selections[0][2]
+# description = Descriptions[0]
+#
+# #print(method.split()[0])
+# Selection = Selections[0][2]
+#
+# print(D_file.get_attribute(method))
+# D_file.wrt_attribute(method, Selection)
 
 
 
