@@ -1,11 +1,11 @@
 # pySUMMA
 
-**Python Wrapper for SUMMA (Structure for Unifying Multiple Modeling Alternatives)**
+**an Object-Oriented Python wrapper for SUMMA model (Structure for Unifying Multiple Modeling Alternatives)**
 
 ## Overview
 
-**pySUMMA is a Python language software package for the manipulation, display and
-  analysis of SUMMA**
+**pySUMMA is an Object-Oriented Python wrapper for the manipulation, display and
+  analysis of SUMMA model**
 
 
 ## Goals
