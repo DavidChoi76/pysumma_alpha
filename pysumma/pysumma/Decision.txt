@@ -7,10 +7,10 @@
 ! (2) the name of the decision is followed by the character string defining the decision
 ! (3) the simulation start/end times must be within single quotes
 ! ***********************************************************************************************************************
-simulStart              '2002-07-01 00:00'      ! (01) simulation start time -- must be in single quotes
+simulStart              '2013-11-15 11:00'      ! (01) simulation start time -- must be in single quotes
 simulFinsh              '2008-09-30 00:00'      ! (02) simulation end time -- must be in single quotes
 ! ***********************************************************************************************************************
-soilCatTbl                      STAR-RUC         ! (03) soil-category dateset
+soilCatTbl                      STAS         ! (03) soil-category dateset
 vegeParTbl                      USGS            ! (04) vegetation category dataset
 soilStress                      NoahType        ! (05) choice of function for the soil moisture control on stomatal resistance
 stomResist                      BallBerry       ! (06) choice of function for stomatal resistance
