@@ -13,11 +13,9 @@ class test_decisions_class(unittest.TestCase):
         file_obj = open(self.file_name2, 'r')
         lines = file_obj.readlines()
         file_obj.close()
-        for l in lines:
-            if l.startswith(name):
-                print(l)
-                return l.split()[1]
-
+        for line in lines:
+            if line.startswith(name):
+                return line.split()[1]
 
     def test_GetSoilCategoryDataset(self):
         soil_cat_dataset = self.Decisions_obj.soilCatTbl
@@ -49,22 +47,25 @@ class test_decisions_class(unittest.TestCase):
         new = ground_para.value
         self.assertEqual(new, 'qTopmodl')
 
-    def test_GetbcLowrTdynn(self):
-        ground_para = self.Decisions_obj.bcLowrTdyn
-        self.assertEqual('bcLowrTdyn', ground_para.name)
-        self.assertEqual('zeroFlux', ground_para.value)
-        self.assertEqual(['presTemp', 'zeroFlux'], ground_para.options)
-        self.assertEqual('type of lower boundary condition for thermodynamics', ground_para.description)
+    def test_GetLowerBoundaryThermo(self):
+        lowbond_therm = self.Decisions_obj.bcLowrTdyn
+        self.assertEqual('bcLowrTdyn', lowbond_therm.name)
+        self.assertEqual(self.get_value(lowbond_therm.name), lowbond_therm.value)
+        self.assertEqual(['presTemp', 'zeroFlux'], lowbond_therm.options)
+        self.assertEqual('type of lower boundary condition for thermodynamics', lowbond_therm.description)
 
-    def test_GetbcLowrTdynn(self):
-        ground_para = self.Decisions_obj.bcLowrTdyn
-        self.assertEqual(self.get_value(ground_para.name), ground_para.value)
-        ground_para.value = 'presTemp'
-        self.assertEqual('bcLowrTdyn', ground_para.name)
-        self.assertEqual(self.get_value(ground_para.name), ground_para.value)
-        self.assertEqual(['presTemp', 'zeroFlux'], ground_para.options)
-        self.assertEqual('type of lower boundary condition for thermodynamics', ground_para.description)
+    def test_SetLowerBoundaryThermo(self):
+        lowbond_therm = self.Decisions_obj.bcLowrTdyn
+        old = lowbond_therm.value
+        self.assertEqual(old, self.get_value(lowbond_therm.name))
+        lowbond_therm.value = 'presTemp'
+        new = lowbond_therm.value
+        self.assertEqual(new, self.get_value(lowbond_therm.name))
 
+    def test_validate_value(self):
+        validate_value2 = 'STAS1'
+        with self.assertRaises(ValueError):
+            self.Decisions_obj.soilCatTbl.value = validate_value2
 
 if __name__ == '__main__':
     unittest.main()
