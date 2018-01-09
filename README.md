@@ -35,9 +35,10 @@
 
 **4.)**  get default simulation start date and time
 
-***>>>*** print(sim_start_time.value)
-
+```python
+>>> print(sim_start_time.value)
   `2002-07-01 00:00`
+ ```
 
 **5.)**  set and write simulation start time in Decision.txt
 
