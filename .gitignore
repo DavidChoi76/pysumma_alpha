@@ -2,4 +2,8 @@
 TEMP/
 
 # pip
-pysumma/pysumma/__pycache__
+pysumma/pysumma/__pycache__/
+pysumma/__pycache__/
+.idea/
+*.pyc
+
