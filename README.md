@@ -23,55 +23,59 @@
 
 **1.)**  import Decisions Module
 
-    from pysumma.pysumma.Decisions import Decisions
+> from pysumma.pysumma.Decisions import Decisions
 
 **2.)**  Open and read Decisioin.txt
 
-    D_file = Decisions('D:\\pysumma\\pysumma_alpha0\\pysumma\\pysumma\\', 'Decision.txt')  
+> D_file = Decisions('D:\\pysumma\\pysumma_alpha\\pysumma\\pysumma\\', 'Decision.txt')  
 
 **3.)**  make attribute for (01) simulation start time  
 
-    sim_start_time = D_file.simulStart
+> sim_start_time = D_file.simulStart
 
-**4.)**  get default date_time
+**4.)**  get default simulation start date and time
 
-    sim_start_time.date_time
+> print(sim_start_time.value)
 
-**5.)**  set simulation start time
+  ==2002-07-01 00:00==
 
-    sim_start_time.date_time = "'2010-11-15 13:00'"
+**5.)**  set and write simulation start time in Decision.txt
 
-**6.)**  write simulation start time in Decision.txt
+> sim_start_time.value = "2003-07-01 00:00"
 
-    sim_start_time.date_time
+**6.)**  make attribute for (03) soil category dataset  
 
-**7.)**  make attribute for (03) soil category dataset  
+> soil_cat_dataset = D_file.soilCatTbl
 
-    soil_cat_dataset = D_file.soilCatTbl
+**7.)**  get abstrat method name (first content of each lines)
 
-**8.)**  get abstrat method name (first content of each lines)
+> print(soil_cat_dataset.name)
 
-    soil_cat_dataset.method
+  ==soilCatTbl==
 
-**9.)**  get default option in Decision.txt  (second content of each lines)
+**8.)**  get default value in Decision.txt  (second content of each lines)
 
-    soil_cat_dataset.option
+> soil_cat_dataset.value
 
-**10.)**  get available options for each method
+**9.)**  get available options for each method
 
-    soil_cat_dataset.options
+> print(soil_cat_dataset.options)
 
-**11.)**  get description(full_name) of each method
+  ==['STAS', 'STAS-RUC', 'ROSETTA']==
 
-    soil_cat_dataset.num_and_descrip
+**10.)**  get description of each method
 
-**12.)**  selected option
+> print(soil_cat_dataset.description)
 
-    soil_cat_dataset.option = 'STAR-RUC'
+  ==soil-category dateset==
 
-**13.)**  write selected option in Decision.txt
+**11.)**  selected option
 
-    soil_cat_dataset.option
+> soil_cat_dataset.option = 'STAR-RUC'
+
+**12.)**  write selected option in Decision.txt
+
+> soil_cat_dataset.option
 
 ## Bugs
   Our issue tracker is at https://github.com/DavidChoi76/pysumma_alpha0/issues.
