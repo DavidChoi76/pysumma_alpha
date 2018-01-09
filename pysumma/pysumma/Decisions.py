@@ -35,27 +35,26 @@ class Decisions:
 
 class option:
     def __init__(self, name, filepath):
-        self.text = self.open_read(filepath)
         self.filepath = filepath
+        self.open_read()
         self.name = name
         self.get_description()
         self.options = self.get_options()
 
-    def open_read(self, filepath):
-        fileopen = open(filepath, 'rt')
-        lines = fileopen.readlines()
-        fileopen.close()
-        return lines
+    def open_read(self):
+        with open(self.filepath, 'rt') as f:
+            self.text = f.readlines()
+        return self.text
 
     def get_line_no(self, text_startwith):
-        for line_no, line in enumerate(self.text):
+        text = self.open_read()
+        for line_no, line in enumerate(text):
             if line.split()[0].startswith(text_startwith):
                 return line_no, line
 
     def get_default_value(self):
         line_no, line = self.get_line_no(self.name)
         return line.split()[1].strip()
-
 
     def get_description(self):
         line_no, line = self.get_line_no(self.name)
@@ -66,27 +65,25 @@ class option:
 
     def get_options(self):
         start_line = 43
-        options_list = []
+        option_list = []
         for num, line in enumerate(self.text[start_line:]):
             line_num = num + start_line
             if line.startswith('! ({})'.format(self.option_number)):
                 while self.text[line_num+1].find("---") < 0 and self.text[line_num+1].find("****") < 0:
                     line_num += 1
-                    options_list.append(self.text[line_num].split('!')[1].strip())
+                    option_list.append(self.text[line_num].split('!')[1].strip())
                 else:
-                    return options_list
+                    return option_list
 
     def wrt_value(self, new_value):
         line_no, line = self.get_line_no(self.name)
-        self.text[line_no] = line.replace(self.value, new_value, 1)
-        self.edit_save()
+        lines = self.open_read()
+        lines[line_no] = line.replace(self.value, new_value, 1)
+        self.edit_save(lines)
 
-
-    def edit_save(self):
-        fileopen = open(self.filepath, 'wt')
-        for line in self.text:
-            fileopen.write(line)
-        fileopen.close()
+    def edit_save(self, new_lines):
+        with open(self.filepath, 'wt') as f:
+            f.writelines(new_lines)
 
     @property
     def value(self):
@@ -94,8 +91,10 @@ class option:
 
     @value.setter
     def value(self, new_value):
-        self.wrt_value(new_value)
-
+        if new_value in self.options:
+            self.wrt_value(new_value)
+        else:
+            raise ValueError ('Your input value {} is not one of the valid options {}'.format(new_value, self.options))
 
 class simul_datetime(option):
     def get_default_date_time(self):
@@ -110,3 +109,4 @@ class simul_datetime(option):
     @value.setter
     def value(self, new_date_time):
         self.wrt_value(new_date_time)
+
