@@ -25,7 +25,7 @@
 ```python
 >>> from pysumma.pysumma.Decisions import Decisions
 ```
-**2.)**  Open and read Decisioin.txt
+**2.)**  Open and read Decision.txt
 ```python
 >>> D_file = Decisions('D:\\pysumma\\pysumma_alpha\\pysumma\\pysumma\\', 'Decision.txt')  
 ```
@@ -36,10 +36,9 @@
 **4.)**  get default simulation start date and time
 
 ```python
->>> print(sim_start_time.value)
+>>> sim_start_time.value
+   "2002-07-01 00:00"
 ```
-       `2002-07-01 00:00 `
-
 **5.)**  set and write simulation start time in Decision.txt
 ```python
 >>> sim_start_time.value = "2003-07-01 00:00"
@@ -48,12 +47,11 @@
 ```python
 >>> soil_cat_dataset = D_file.soilCatTbl
 ```
-**7.)**  get abstrat method name (first content of each lines)
+**7.)**  get abstract method name (first content of each lines)
 ```python
 >>> print(soil_cat_dataset.name)
+   "soilCatTbl"
 ```
-       `soilCatTbl`
-
 **8.)**  get default value in Decision.txt  (second content of each lines)
 ```python
 >>> soil_cat_dataset.value
@@ -61,22 +59,16 @@
 **9.)**  get available options for each method
 ```python
 >>> print(soil_cat_dataset.options)
+   "['STAS', 'STAS-RUC', 'ROSETTA']"
 ```
-       `['STAS', 'STAS-RUC', 'ROSETTA']`
-
 **10.)**  get description of each method
 ```python
 >>> print(soil_cat_dataset.description)
+   "soil-category dateset"
 ```
-       `soil-category dateset`
-
-**11.)**  selected option
+**11.)**  select option and write selected option in Decision.txt
 ```python
->>> soil_cat_dataset.option = 'STAR-RUC'
-```
-**12.)**  write selected option in Decision.txt
-```python
->>> soil_cat_dataset.option
+>>> soil_cat_dataset.value = 'STAR-RUC'
 ```
 ## Bugs
   Our issue tracker is at https://github.com/DavidChoi76/pysumma_alpha0/issues.
