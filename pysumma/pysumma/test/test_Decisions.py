@@ -20,14 +20,14 @@ class test_decisions_class(unittest.TestCase):
     def test_GetSoilCategoryDataset(self):
         soil_cat_dataset = self.Decisions_obj.soilCatTbl
         self.assertEqual('soilCatTbl', soil_cat_dataset.name)
-        self.assertEqual('STAS', soil_cat_dataset.value)
+        self.assertEqual(self.get_value(soil_cat_dataset.name), soil_cat_dataset.value)
         self.assertEqual(['STAS', 'STAS-RUC', 'ROSETTA'], soil_cat_dataset.options)
         self.assertEqual('soil-category dateset', soil_cat_dataset.description)
 
     def test_SetSoilCategoryDataset(self):
         soil_cat_dataset = self.Decisions_obj.soilCatTbl
         old = soil_cat_dataset.value
-        self.assertEqual(old, 'STAS')
+        self.assertEqual(old, self.get_value(soil_cat_dataset.name))
         soil_cat_dataset.value = 'ROSETTA'
         new = soil_cat_dataset.value
         self.assertEqual(new, 'ROSETTA')
@@ -35,14 +35,14 @@ class test_decisions_class(unittest.TestCase):
     def test_GetGroundwaterParameterization(self):
         ground_para = self.Decisions_obj.groundwatr
         self.assertEqual('groundwatr', ground_para.name)
-        self.assertEqual('noXplict', ground_para.value)
+        self.assertEqual(self.get_value(ground_para.name), ground_para.value)
         self.assertEqual(['qTopmodl', 'bigBuckt', 'noXplict'], ground_para.options)
         self.assertEqual('choice of groundwater parameterization', ground_para.description)
 
     def test_SetGroundwaterParameterization(self):
         ground_para = self.Decisions_obj.groundwatr
         old = ground_para.value
-        self.assertEqual(old, 'noXplict')
+        self.assertEqual(old, self.get_value(ground_para.name))
         ground_para.value = 'qTopmodl'
         new = ground_para.value
         self.assertEqual(new, 'qTopmodl')

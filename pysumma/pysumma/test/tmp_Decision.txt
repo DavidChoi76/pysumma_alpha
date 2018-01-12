@@ -19,10 +19,10 @@ num_method                      itertive        ! (07) choice of numerical metho
 fDerivMeth                      analytic        ! (08) method used to calculate flux derivatives
 LAI_method                      specified       ! (09) method used to determine LAI and SAI
 f_Richards                      mixdform        ! (10) form of Richard's equation
-groundwatr                      noXplict        ! (11) choice of groundwater parameterization
+groundwatr                      qTopmodl        ! (11) choice of groundwater parameterization
 hc_profile                      constant        ! (12) choice of hydraulic conductivity profile
 bcUpprTdyn                      nrg_flux        ! (13) type of upper boundary condition for thermodynamics
-bcLowrTdyn                      zeroFlux        ! (14) type of lower boundary condition for thermodynamics
+bcLowrTdyn                      presTemp        ! (14) type of lower boundary condition for thermodynamics
 bcUpprSoiH                      liq_flux        ! (15) type of upper boundary condition for soil hydrology
 bcLowrSoiH                      drainage        ! (16) type of lower boundary condition for soil hydrology
 veg_traits                      CM_QJRMS1998    ! (17) choice of parameterization for vegetation roughness length and displacement height

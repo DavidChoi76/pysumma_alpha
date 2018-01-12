@@ -17,6 +17,7 @@ class Plotting:
 	def Open_netcdf(self):
 		filepath = self.path+self.filename
 		ds = xr.open_dataset(filepath)
+		print(ds)
 		return ds
 
 	def Plot_1D(self, ds, varibale_num):
@@ -51,22 +52,30 @@ class Plotting:
 		var_list_key_Y = list(var_dict.keys())[varibale_num_Y]
 		var_list_key_X = list(var_dict.keys())[varibale_num_X]
 
-		#X = ds[var_list_key_X][:,hru_num]
-		#Y = ds[var_list_key_Y][:,hru_num]
+		for timestep in [999, 1999, 2999]:
+			layers = ds.nLayers[timestep].values[0]  # extract the number of layers associated with the first timestep
+			var_list_key = list(var_dict.keys())[midto]
+			startIndex = ds[var_list_key][timestep].values[0] - 1  # - 1 since the SUMMA indices are 1-based and python indices are 0-based
+			endIndex = startIndex + layers
+			plot = plt.plot(ds[var_list_key_X][startIndex:endIndex],
+							ds[var_list_key_Y][startIndex:endIndex,0],
+							label='t = {: 2d}'.format(timestep+1))
 
-		timestep = 10
-		layers = ds.nLayers[timestep].values[0]  # extract the number of layers associated with the first timestep
-		var_list_key = list(var_dict.keys())[midto]
-		startIndex = ds[var_list_key][timestep].values[0] - 1  # - 1 since the SUMMA indices are 1-based and python indices are 0-based
-		endIndex = startIndex + layers
-		plot = plt.plot(ds[var_list_key_X][startIndex:endIndex],
-						ds[var_list_key_Y][startIndex:endIndex,0],
-						label='t = {: 2d}'.format(timestep))
+		# timestep = 10
+		# layers = ds.nLayers[timestep].values[0]  # extract the number of layers associated with the first timestep
+		# var_list_key = list(var_dict.keys())[midto]
+		# startIndex = ds[var_list_key][timestep].values[0] - 1  # - 1 since the SUMMA indices are 1-based and python indices are 0-based
+		# endIndex = startIndex + layers
+		# plot = plt.plot(ds[var_list_key_X][startIndex:endIndex],
+		# 				ds[var_list_key_Y][startIndex:endIndex,0],
+		# 				label='t = {: 2d}'.format(timestep))
+
 		plt.ylabel('{} ({})'.format(ds[var_list_key_Y].long_name, ds[var_list_key_Y].units))
 		plt.xlabel('{} ({})'.format(ds[var_list_key_X].long_name, ds[var_list_key_X].units))
+		plt.legend(loc=3)
 		return plot
 
-path = 'D:\\pysumma\\pysumma_alpha0\\pysumma\\pysumma\\'
+path = 'D:\\pysumma\\pysumma_alpha\\pysumma\\pysumma\\'
 filename = 'BasinRunoff_1dRichards.nc'
 
 Text = Plotting(path, filename)
@@ -75,15 +84,24 @@ Attribute = dict(Text_Info.attrs)
 Dimensions = Text_Info.dims
 Data_variables = Text_Info.data_vars
 
-variable_1D = [['basin__SurfaceRunoff','2'],['basin__ColumnOutflow ','3'], ['averageInstantRunoff','8'], ['averageRoutedRunoff','9']]
-print(variable_1D)
-#input variable_1D
+variable_1D = [['basin__SurfaceRunoff','2'],['basin__ColumnOutflow','3'], ['basin__AquiferStorage','4'],
+			   ['basin__AquiferRecharge', '5'], ['basin__AquiferBaseflow', '6'],['basin__AquiferTranspire','7'],
+			   ['averageInstantRunoff', '8'], ['averageRoutedRunoff', '9']]
+
+variable_1D_hru = [['pptrate','0'],['airtemp','1'], ['nSnow','10'], ['nSoil','11'],
+                   ['nLayers','12'],['midSoilStartIndex','13'], ['midTotoStartIndex','14'], ['ifcSoilStartIndex','15'],
+                   ['ifcTotoStartIndex','16'],['scalarSWE','17'],['scalarSurfaceTemp','23'],['scalarSenHeatTotal','27'],
+                   ['scalarLatHeatTotal','28'],['scalarSnowSublimation','29'],['scalarThroughfallSnow','30'],
+                   ['scalarThroughfallRain','31'],['scalarRainPlusMelt','32'],['scalarInfiltration','33'],
+                   ['scalarExfiltration','34'],['scalarSurfaceRunoff','35']]
+
+variable_1D_layer = [['mLayerTemp','18'],['mLayerVolFracIce','19'], ['mLayerVolFracLiq','20'], ['mLayerVolFracWat','21'],
+                   ['mLayerMatricHead','22'],['mLayerDepth','24'], ['mLayerHeight','25'], ['iLayerHeight','26'],
+                   ['iLayerLiqFluxSoil','36'],['mLayerLiqFluxSoil','37']]
+
 plot_1D = Text.Plot_1D(Text_Info, 8)
 plt.show()
 
-variable_1D_hru = [['pptrate','0'],['airtemp','1'], ['nSnow','10'], ['scalarSurfaceRunoff','35'], ['mLayerLiqFluxSoil','37']]
-print(variable_1D_hru)
-#input variable_1D_hru
 plot_1D_hru = Text.Plot_1D_hru(Text_Info, 0, 17)
 plt.show()
 

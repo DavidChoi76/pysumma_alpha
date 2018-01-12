@@ -110,3 +110,15 @@ class simul_datetime(option):
     def value(self, new_date_time):
         self.wrt_value(new_date_time)
 
+class file_manager():
+    def __init__(self, path, filename):
+        self.path = path
+        self.filename = filename
+        self.filepath = self.path + self.filename
+        decision_filename = self.open_read()[4].replace("'","/").split("/")[3]
+        return decision_filename
+
+    def open_read(self):
+        with open(self.filepath, 'rt') as f:
+            self.text = f.readlines()
+        return self.text
