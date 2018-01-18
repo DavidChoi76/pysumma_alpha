@@ -17,7 +17,41 @@
  - Visualize outputs (working)
  - Automate model calibration or sensitivity studies (working)
 
-## Examples:
+## Installation and Usage
+
+**pySUMMA requires Python 3.6 and following packages : **
+
+ - seaborn : statistical data visualization
+ - xarray : N-D labeled arrays and datasets in python
+ - numpy : the fundamental package for scientific computing with Python
+ - matplotlib : a Python 2D plotting library 
+ - Cartopy : a library providing cartographic tools.
+ - Shapely : a package for creation, manipulation, and analysis of planar geometry    
+             objects based on GEOS.
+ - geopandas (required numpy, pandas, shapely, fiona, six, pyproj)
+ - jupyterthemes
+ - Fiona (required gdal) : OGR's neater API
+ - pyproj : an interface to the PROJ.4 library for cartographic transformations.
+ - GDAL : (Geospatial Data Abstraction Library), a translator library for raster  
+           geospatial data formats.
+
+## Examples of installation :
+
+**installation of pysumma**  
+**1.)**  open command window and located in pysumma folder same level of setup.py.
+```python
+D:\pysumma\pysumma_alpha\pysumma\pysumma\pip install .
+```
+
+## Examples of unit test :
+
+**running of a unit test using unittest library**  
+**1.)**  after installation of pysumma package and located in pysumma folder same level of setup.py.
+```python
+D:\pysumma\pysumma_alpha\pysumma\pysumma\python setup.py test
+```
+
+## Examples of manipulating summa model :
 
 **Intialize using with statement.**  
 
