@@ -31,14 +31,6 @@ class file_manager_option:
     def __init__(self, name, filepath):
         self.name = name
         self.file_manager_filepath = filepath
-        self.open_read()
-        self.get_info()
-        self.filepath = self.value
-        if not self.value.endswith('/'):
-            self.filename = self.value.split('/')[-1]
-            self.filepath = "/".join(self.value.split('/')[:-1])
-            return self.filename
-
 
     def open_read(self):
         with open(self.file_manager_filepath, 'rt') as f:
@@ -57,47 +49,45 @@ class file_manager_option:
         line_no, line = self.get_line_no(self.name)
         words = line.split("'")
         words = [w.strip() for w in words if w.strip() != "" and w.strip() != "!"]
-        self.value = words[0]
         return words[0]
 
-    # def wrt_filepath(self, new_value):
-    #     line_no, line = self.get_line_no(self.name)
-    #     lines = self.open_read()
-    #     lines[line_no] = line.replace(self.filepath, new_value, 1)
-    #     self.edit_save(lines)
-
-    def wrt_filename(self, new_value):
+    def wrt_value(self, new_value):
         line_no, line = self.get_line_no(self.name)
         lines = self.open_read()
-        lines[line_no] = line.replace(self.filename, new_value, 1)
-        # print(self.filename)
-        # print(new_value)
-        # print(line_no)
-        print(lines[line_no])
-        self.edit_save(lines[line_no])
+        lines[line_no] = line.replace(self.value, new_value, 1)
+        self.edit_save(lines)
 
     def edit_save(self, new_lines):
-        with open(self.filename, 'wt') as f:
-            print(self.filename)
-            print(self.filepath)
+        with open(self.file_manager_filepath, 'wt') as f:
             f.writelines(new_lines)
 
     @property
     def value(self):
         return self.get_value()
 
+
     @value.setter
     def value(self, new_value):
-#        self.wrt_filepath(new_value)
-        return self.wrt_filename(new_value)
-
+        self.wrt_value(new_value)
 
     @property
-    def value(self):
-        return self.get_info()
+    def filepath(self):
+        if not self.value.endswith('/'):
+            return "/".join(self.value.split('/')[:-1]) + "/"
+        else:
+            return self.value
 
-    @value.setter
-    def value(self, new_value):
-#        self.wrt_filepath(new_value)
-        return self.wrt_filename(new_value)
+    @filepath.setter
+    def filepath(self, new_value):
+        value = new_value + self.filename
+        self.wrt_value(value)
+
+    @property
+    def filename(self):
+        return self.value.split('/')[-1]
+
+    @filename.setter
+    def filename(self, new_value):
+        value = self.filepath + new_value
+        self.wrt_value(value)
 
