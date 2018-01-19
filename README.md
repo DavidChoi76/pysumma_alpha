@@ -12,10 +12,10 @@
 
 **pySUMMA is intended to provide**
 
- - Get and set model parameters (working)
- - Run simulations (working)
- - Visualize outputs (working)
- - Automate model calibration or sensitivity studies (working)
+ - Get and set model parameters (in progress)
+ - Run simulations (in progress)
+ - Visualize outputs (in progress)
+ - Automate model calibration or sensitivity studies (in progress)
 
 ## Installation and Usage
 
