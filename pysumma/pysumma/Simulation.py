@@ -1,12 +1,16 @@
 #from Decisions import Decisions         # This is for testing in cmd window.
 from .Decisions import Decisions       # This is for testing in this python code.
+import subprocess
+import os
 class Simulation:
+    executable = ''
+    run_suffix = '_'
     def __init__(self, filepath):
-        self.filepath = filepath
+        self.filepath = os.path.abspath(filepath)
         self.setting_path = file_manager_option('setting_path', self.filepath)
         self.input_path = file_manager_option('input_path', self.filepath)
         self.output_path = file_manager_option('output_path', self.filepath)
-        self.decision = file_manager_option('decision', self.filepath)
+        self.decision_path = file_manager_option('decision', self.filepath)
         self.meta_time = file_manager_option('meta_time', self.filepath)
         self.meta_attr = file_manager_option('meta_attr', self.filepath)
         self.meta_type = file_manager_option('meta_type', self.filepath)
@@ -23,9 +27,13 @@ class Simulation:
         self.initial_cond = file_manager_option('initial_cond', self.filepath)
         self.para_trial = file_manager_option('para_trial', self.filepath)
         self.output_prefix = file_manager_option('output_prefix', self.filepath)
-#        self.change = self.decision.value
-#        self.decision_obj = self.decision.value.replace("/","\\")
-#        self.decision_obj1 = Decisions('D:\\pysumma\\summa_test\\summa_test\\settings\\{}'.format(self.decision_obj))
+        self.decision_obj = Decisions(self.setting_path.value + self.decision_path.value)
+    def execute(self):
+        if self.executable == '':
+            raise ValueError('No executable defined. Set as "executable" attribute of Simulation')
+        else:
+            cmd = "{} -p never -s {}       -m {}".format(self.executable, self.run_suffix, self.filepath)
+            subprocess.run(cmd, shell=True)
 
 class file_manager_option:
     def __init__(self, name, filepath):
