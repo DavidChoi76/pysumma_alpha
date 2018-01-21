@@ -24,34 +24,37 @@ class Plotting:
 		var_list_key = list(var_dict.keys())[varibale_num]
 		plot = ds[var_list_key].plot()
 		plt.ylabel('{} ({})'.format(ds[var_list_key].long_name, ds[var_list_key].units))
-		return plot
+		plt.show()
+		return plt.show()
 
 	def plot_1d_hru(self, ds, hru_num, varibale_num):
 		var_dict= dict(ds.data_vars)
 		var_list_key = list(var_dict.keys())[varibale_num]
 		plot = ds[var_list_key][:,hru_num].plot()
 		plt.ylabel('{} ({})'.format(ds[var_list_key].long_name, ds[var_list_key].units))
-		return plot
+		plt.show()
+		return plt.show()
 
 	def plot_1d_layer(self, ds, hru_num, varibale_num_Y, start_index_X): #='mLayerVolFracWat', start_index='midTotoStartIndex'
 		var_dict= dict(ds.data_vars)
 		var_list_key_Y = list(var_dict.keys())[varibale_num_Y]
 		plot = ds[var_list_key_Y][:,hru_num].plot()
-		timestep = 8736
+		timestep = 2207
 		layers = ds.nLayers[timestep].values[0]  # extract the number of layers associated with the first timestep
 		var_list_key_X = list(var_dict.keys())[start_index_X]
 		startIndex = ds[var_list_key_X][timestep].values[0] - 1  # - 1 since the SUMMA indices are 1-based and python indices are 0-based
 		endIndex = startIndex + layers
 		ds[var_list_key_Y][startIndex:endIndex, 0].plot(label='t = {: 2d}'.format(timestep))
 		plt.ylabel('{} ({})'.format(ds[var_list_key_Y].long_name, ds[var_list_key_Y].units))
-		return plot
+		plt.show()
+		return plt.show()
 
 	def plot_2d(self, ds, hru_num, varibale_num_Y, varibale_num_X, midto):
 		var_dict= dict(ds.data_vars)
 		var_list_key_Y = list(var_dict.keys())[varibale_num_Y]
 		var_list_key_X = list(var_dict.keys())[varibale_num_X]
 
-		for timestep in [999, 1999, 2999]:
+		for timestep in [99, 999, 1999]:
 			layers = ds.nLayers[timestep].values[0]  # extract the number of layers associated with the first timestep
 			var_list_key = list(var_dict.keys())[midto]
 			startIndex = ds[var_list_key][timestep].values[0] - 1  # - 1 since the SUMMA indices are 1-based and python indices are 0-based
@@ -62,7 +65,8 @@ class Plotting:
 		plt.ylabel('{} ({})'.format(ds[var_list_key_Y].long_name, ds[var_list_key_Y].units))
 		plt.xlabel('{} ({})'.format(ds[var_list_key_X].long_name, ds[var_list_key_X].units))
 		plt.legend(loc=3)
-		return plot
+		plt.show()
+		return plt.show()
 
 #		def Plot_2D_layer(self, ds, hru_num, varibale_num_Y, varibale_num_X, midto):
 

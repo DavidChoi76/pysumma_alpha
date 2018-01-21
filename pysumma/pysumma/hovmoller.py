@@ -53,4 +53,5 @@ def hovmoller(data_array, xdim, ydim, how='mean', cmap='viridis'):
     daysofweek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday',
                   'Thursday', 'Friday', 'Saturday']
     seasons = ['DJF', 'MAM', 'JJA', 'SON']
-    return fig, ax
+    plt.show()
+    return plt.show() #fig, ax

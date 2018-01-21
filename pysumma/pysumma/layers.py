@@ -51,4 +51,5 @@ def layers(ds, var, cmap='viridis'):
     sm = plt.cm.ScalarMappable(cmap=colors, norm=norm)
     sm._A = []
     plt.colorbar(sm)
-    return plt.gcf(), plt.gca()
+    plt.show()
+    return plt.show()  #plt.gcf(), plt.gca()
