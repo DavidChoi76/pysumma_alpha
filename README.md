@@ -40,7 +40,7 @@
 
 ## Download pysumma_alpha and summa_testcase :
 
-**1.)**  open VirtualBox (check whether summa image or not
+**1.)**  open VirtualBox
 
 **2.)**  open LXTerminal
 
@@ -202,7 +202,7 @@
 variable = [['basin__SurfaceRunoff','2'],['basin__ColumnOutflow','3'], 
             ['basin__AquiferStorage','4'],['basin__AquiferRecharge', '5'], 
             ['basin__AquiferBaseflow', '6'],['basin__AquiferTranspire','7'],
-			['averageInstantRunoff', '8'], ['averageRoutedRunoff', '9']]
+	    ['averageInstantRunoff', '8'], ['averageRoutedRunoff', '9']]
 ```
 ```python
 >>> P.plot_1d(P_info, 5)
