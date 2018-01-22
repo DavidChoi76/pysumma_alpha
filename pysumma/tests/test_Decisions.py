@@ -6,7 +6,7 @@ from shutil import copyfile
 class test_decisions_class(unittest.TestCase):
 
     filename = 'Decision.txt'
-    path = 'D:\\pysumma\\pysumma_alpha\\pysumma\\tests\\'
+    path = '/home/hydro/Downloads/pysumma_alpha/pysumma/tests/'
     filepath = path + filename
     filename2 = 'tmp_{}'.format(filename)
     filepath2 = path + filename2
