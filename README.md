@@ -21,22 +21,21 @@
 
 **pySUMMA requires Python 3.6 and following packages : **
 
- - seaborn : statistical data visualization
- - xarray : N-D labeled arrays and datasets in python
- - numpy : the fundamental package for scientific computing with Python
- - matplotlib : a Python 2D plotting library 
- - Cartopy : a library providing cartographic tools.
- - Shapely : a package for creation, manipulation, and analysis of planar geometry    
-             objects based on GEOS.
- - geopandas (required numpy, pandas, shapely, fiona, six, pyproj)
- - jupyterthemes
- - Fiona (required gdal) : OGR's neater API
- - pyproj : an interface to the PROJ.4 library for cartographic transformations.
- - GDAL : (Geospatial Data Abstraction Library), a translator library for raster  
+ - seaborn 0.8.1 : statistical data visualization
+ - xarray 0.10.0 : N-D labeled arrays and datasets in python
+ - numpy 1.13.3 : the fundamental package for scientific computing with Python
+ - matplotlib 2.1.1 : a Python 2D plotting library 
+ - Cartopy 0.15.1 : a library providing cartographic tools.
+ - Shapely 1.6.3 : a package for creation, manipulation, and analysis of planar geometry    
+                   objects based on GEOS.
+ - jupyterthemes 0.18.3
+ - pyproj 1.9.5.1 : an interface to the PROJ.4 library for cartographic transformations.
+ - GDAL 2.2.3 : (Geospatial Data Abstraction Library), a translator library for raster  
            geospatial data formats.
- 
- - VirtualBox
-                 
+ - Fiona 1.7.11(required GDAL) : OGR's neater API
+ - geopandas 0.3.0 (required numpy, pandas, shapely, fiona, six, pyproj) 
+ - VirtualBox 5.1.32
+ - lubuntu-16-10              
 
 ## Download pysumma_alpha and summa_testcase :
 
@@ -44,21 +43,21 @@
 
 **2.)**  open LXTerminal
 
-**3.)**  move to Downloads folder and download pysumma_alpha
+**3.)**  change directory to Downloads folder and download pysumma_alpha
 ```python
->>> git clone http://github.com/DavidChoi76/pysumma_alpha
+hydro@hydro-VirtualBox:~/Downloads$ git clone http://github.com/DavidChoi76/pysumma_alpha
 ```
 **4.)**  open web browser(https://ral.ucar.edu/projects/summa) and download summa_testcase(summaTestCases_2x.tar.gz)       
            
-**5.)**  move to '~/Downloads/summaTestCases_2x and installTestCases
+**5.)**  change directory to '~/Downloads/summaTestCases_2x and installTestCases
 ```python
->>> ~/Downloads/summaTestCases_2x$ ./installTestCases_local.sh
+hydro@hydro-VirtualBox:~/Downloads/summaTestCases_2x$ ./installTestCases_local.sh
 ```
 
 ## Examples of installation :
 
 **installation of pysumma**  
-**1.)**  move into pysumma folder same level with setup.py.
+**1.)**  change directory into pysumma folder same level with setup.py.
 ```python
 >>> ~/Downloads/pysumma_alpha/pysumma/pip install .
 ```
@@ -73,7 +72,39 @@
 
 ## Examples of manipulating summa model :
 
-**(1) manipulating Decision text file.**  
+**(1) manipulating file Manager file.**  
+
+**1.)**  import Simulation Module
+```python
+>>> from pysumma.Simulation import Simulation
+```
+**2.)**  read file Manager text file and create S attribute
+```python
+>>> S = Simulation('/home/hydro/Downloads/summaTestCases_2.x/settings/wrrPaperTestCases/figure01/summa_fileManager_riparianAspenCLM2stream.txt')
+```
+**3.)**  make attribute of setting_path
+```python
+>>> setting_path = S.setting_path
+>>> setting_path.filepath
+   "/summaTestCases_2.x/settings/"
+>>> setting_path.name
+   "setting_path" 
+```
+**4.)**  make attribute of Decision
+```python
+>>> decision = S.decision_path
+>>> decision.filepath
+   "wrrPaperTestCases/figure09/"
+>>> decision.filename
+   "summa_zDecisions_riparianAspenCLM2stream.txt"
+>>> decision.name
+   "decision"
+```   
+**5.)**  change decision file name when users need to change decision file name
+```python
+>>> decision.filename = "Decision.py"
+```   
+**(2) manipulating Decision text file.**  
 
 **1.)**  import Decisions Module
 ```python
@@ -81,7 +112,7 @@
 ```
 **2.)**  read Decision text file and create D attribute
 ```python
->>> D = Decisions('/home/hydro/Downloads/summaTestCases_2.x/settings/wrrPaperTestCases/figure01/summa_zDecisions_riparianAspenCLM2stream.txt')
+>>> D = Decisions(setting_path.filepath + decision.filepath + decision.filename)
 ```
 **3.)**  make attribute for (01) simulation start time  
 ```python
@@ -137,38 +168,6 @@
 ```python
 >>> soil_cat_dataset.value = 'STAS-RUC'
 ```
-**(2) manipulating file Manager file.**  
-
-**1.)**  import Simulation Module
-```python
->>> from pysumma.Simulation import Simulation
-```
-**2.)**  read file Manager text file and create S attribute
-```python
->>> S = Simulation('/home/hydro/Downloads/summaTestCases_2.x/settings/wrrPaperTestCases/figure01/summa_fileManager_riparianAspenCLM2stream.txt')
-```
-**3.)**  make attribute of setting_path
-```python
->>> setting_path = S.setting_path
->>> setting_path.filepath
-   "/summaTestCases_2.x/settings/"
->>> setting_path.name
-   "setting_path" 
-```
-**4.)**  make attribute of Decision
-```python
->>> decision = S.decision_path
->>> decision.filepath
-   "wrrPaperTestCases/figure09/"
->>> decision.filename
-   "summa_zDecisions_riparianAspenCLM2stream.txt"
->>> decision.name
-   "decision"
-```   
-**5.)**  change decision file name when users need to change decision file name
-```python
->>> decision.filename = "Decision.py"
-```   
 
 **(3) running summa model.**  
 
