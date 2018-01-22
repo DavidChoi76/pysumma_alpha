@@ -58,7 +58,7 @@
 ## Examples of installation :
 
 **installation of pysumma**  
-**1.)**  move into pysumma folder same level of setup.py.
+**1.)**  move into pysumma folder same level with setup.py.
 ```python
 >>> ~/Downloads/pysumma_alpha/pysumma/pip install .
 ```
