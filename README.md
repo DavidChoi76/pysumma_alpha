@@ -192,6 +192,7 @@
 **1.)**  import Plotting Module
 ```python
 >>> from pysumma.Plotting import Plotting
+>>> import matplotlib.pyplot as plt
 ```
 **2.)**  read netCDF file
 ```python
@@ -210,6 +211,7 @@ variable = [['basin__SurfaceRunoff','2'],['basin__ColumnOutflow','3'],
 ```
 ```python
 >>> P.plot_1d(P_info, 5)
+>>> plt.show()
 ```
 **5.)**  Display 1D (time, hru_num, variable_num_Y)
 ```python
@@ -224,6 +226,7 @@ variable_num_Y = [['pptrate','0'],['airtemp','1'], ['nSnow','10'], ['nSoil','11'
 ```
 ```python
 >>> P.plot_1d_hru(P_info, 0, 17)
+>>> plt.show()
 ```
 **6.)**  Display 1D (time, hru_num, variable_num_Y, layer_time)
 ```python
@@ -236,6 +239,7 @@ layer_time = [['midSoilStartIndex','13'], ['midTotoStartIndex','14'],
 ```
 ```python
 >>> P.plot_1d_layer(P_info, 0, 26, 14)
+>>> plt.show()
 ```
 
 ** Display plot from summa_plot created by andrew bennett from UW ** 
@@ -250,6 +254,7 @@ layer_time = [['midSoilStartIndex','13'], ['midTotoStartIndex','14'],
 ```python
 >>> ds = xr.open_dataset('/home/hydro/Downloads/summaTestCases_2.x/output/wrrPaperTestCases/figure01/vegImpactsRad_2006-2007_pysumma_demo_1.nc').isel(hru=0)
 >>> layers(ds.isel(time=slice(0,500)), 'mLayerVolFracWat')
+>>> plt.show()
 ```
 
 
