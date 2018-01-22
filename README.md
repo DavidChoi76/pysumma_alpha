@@ -50,6 +50,10 @@
 ```
 **4.)**  open web browser(https://ral.ucar.edu/projects/summa) and download summa_testcase(summaTestCases_2x.tar.gz)       
            
+**5.)**  move to '~/Downloads/summaTestCases_2x and installTestCases
+```python
+>>> ~/Downloads/summaTestCases_2x$ ./installTestCases_local.sh
+```
 
 ## Examples of installation :
 
