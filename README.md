@@ -12,9 +12,9 @@
 
 **pySUMMA is intended to provide**
 
- - Get and set model parameters (in progress)
- - Run simulations (in progress)
- - Visualize outputs (in progress)
+ - Get and set model parameters(Decision and fileManager file) (in progress)
+ - Run SUMMA Model (in progress)
+ - Visualize netCDF outputs (in progress)
  - Automate model calibration or sensitivity studies (in progress)
 
 ## Installation and Usage
@@ -40,7 +40,7 @@
 
 ## Download pysumma_alpha and summa_testcase :
 
-**1.)**  open VirtualBox (check whether summa image or not
+**1.)**  open VirtualBox
 
 **2.)**  open LXTerminal
 
@@ -50,11 +50,15 @@
 ```
 **4.)**  open web browser(https://ral.ucar.edu/projects/summa) and download summa_testcase(summaTestCases_2x.tar.gz)       
            
+**5.)**  move to '~/Downloads/summaTestCases_2x and installTestCases
+```python
+>>> ~/Downloads/summaTestCases_2x$ ./installTestCases_local.sh
+```
 
 ## Examples of installation :
 
 **installation of pysumma**  
-**1.)**  move into pysumma folder same level of setup.py.
+**1.)**  move into pysumma folder same level with setup.py.
 ```python
 >>> ~/Downloads/pysumma_alpha/pysumma/pip install .
 ```
@@ -188,6 +192,7 @@
 **1.)**  import Plotting Module
 ```python
 >>> from pysumma.Plotting import Plotting
+>>> import matplotlib.pyplot as plt
 ```
 **2.)**  read netCDF file
 ```python
@@ -202,10 +207,11 @@
 variable = [['basin__SurfaceRunoff','2'],['basin__ColumnOutflow','3'], 
             ['basin__AquiferStorage','4'],['basin__AquiferRecharge', '5'], 
             ['basin__AquiferBaseflow', '6'],['basin__AquiferTranspire','7'],
-			['averageInstantRunoff', '8'], ['averageRoutedRunoff', '9']]
+	    ['averageInstantRunoff', '8'], ['averageRoutedRunoff', '9']]
 ```
 ```python
 >>> P.plot_1d(P_info, 5)
+>>> plt.show()
 ```
 **5.)**  Display 1D (time, hru_num, variable_num_Y)
 ```python
@@ -220,6 +226,7 @@ variable_num_Y = [['pptrate','0'],['airtemp','1'], ['nSnow','10'], ['nSoil','11'
 ```
 ```python
 >>> P.plot_1d_hru(P_info, 0, 17)
+>>> plt.show()
 ```
 **6.)**  Display 1D (time, hru_num, variable_num_Y, layer_time)
 ```python
@@ -232,6 +239,7 @@ layer_time = [['midSoilStartIndex','13'], ['midTotoStartIndex','14'],
 ```
 ```python
 >>> P.plot_1d_layer(P_info, 0, 26, 14)
+>>> plt.show()
 ```
 
 ** Display plot from summa_plot created by andrew bennett from UW ** 
@@ -246,6 +254,7 @@ layer_time = [['midSoilStartIndex','13'], ['midTotoStartIndex','14'],
 ```python
 >>> ds = xr.open_dataset('/home/hydro/Downloads/summaTestCases_2.x/output/wrrPaperTestCases/figure01/vegImpactsRad_2006-2007_pysumma_demo_1.nc').isel(hru=0)
 >>> layers(ds.isel(time=slice(0,500)), 'mLayerVolFracWat')
+>>> plt.show()
 ```
 
 
