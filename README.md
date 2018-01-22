@@ -59,7 +59,7 @@ hydro@hydro-VirtualBox:~/Downloads/summaTestCases_2x$ ./installTestCases_local.s
 **installation of pysumma**  
 **1.)**  change directory into pysumma folder same level with setup.py.
 ```python
->>> ~/Downloads/pysumma_alpha/pysumma/pip install .
+hydro@hydro-VirtualBox:~/Downloads/pysumma_alpha/pysumma$ pip install .
 ```
 
 ## Examples of unit test :
@@ -67,7 +67,7 @@ hydro@hydro-VirtualBox:~/Downloads/summaTestCases_2x$ ./installTestCases_local.s
 **a unit test using unittest library**  
 
 ```python
->>> ~/Downloads/pysumma_alpha/pysumma/python setup.py test
+hydro@hydro-VirtualBox:~/Downloads/pysumma_alpha/pysumma$ python setup.py test
 ```
 
 ## Examples of manipulating summa model :
