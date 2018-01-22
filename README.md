@@ -41,7 +41,9 @@
 ## Download pysumma_alpha and summa_testcase :
 
 **1.)**  open VirtualBox (check whether summa image or not
+
 **2.)**  open LXTerminal
+
 **3.)**  move to Downloads folder and download pysumma_alpha
 ```python
 >>> git clone http://github.com/DavidChoi76/pysumma_alpha
@@ -54,7 +56,7 @@
 **installation of pysumma**  
 **1.)**  move into pysumma folder same level of setup.py.
 ```python
->>> ~/Downloads/pysumma_alpha/pysumma/pysumma/pip install .
+>>> ~/Downloads/pysumma_alpha/pysumma/pip install .
 ```
 
 ## Examples of unit test :
@@ -62,7 +64,7 @@
 **a unit test using unittest library**  
 
 ```python
->>> ~/Downloads/pysumma_alpha/pysumma/pysumma/python setup.py test
+>>> ~/Downloads/pysumma_alpha/pysumma/python setup.py test
 ```
 
 ## Examples of manipulating summa model :
@@ -92,7 +94,7 @@
 ```
 **6.)**  make attribute for (02) simulation finish time  
 ```python
->>> sim_finish_time = D_file.simulFinsh
+>>> sim_finish_time = D.simulFinsh
 ```
 **7.)**  get default simulation finish date and time
 ```python
@@ -115,6 +117,7 @@
 **11.)**  get default value in Decision text file  (second content of each lines)
 ```python
 >>> soil_cat_dataset.value
+   "STAS"
 ```
 **12.)**  get available options for each method
 ```python
@@ -128,7 +131,7 @@
 ```
 **14.)**  select option and write selected option in Decision.txt
 ```python
->>> soil_cat_dataset.value = 'STAR-RUC'
+>>> soil_cat_dataset.value = 'STAS-RUC'
 ```
 **(2) manipulating file Manager file.**  
 
@@ -145,7 +148,7 @@
 >>> setting_path = S.setting_path
 >>> setting_path.filepath
    "/summaTestCases_2.x/settings/"
->>> setting_path_name
+>>> setting_path.name
    "setting_path" 
 ```
 **4.)**  make attribute of Decision
@@ -188,11 +191,11 @@
 ```
 **2.)**  read netCDF file
 ```python
->>>P = Plotting('/home/hydro/Downloads/summaTestCases_2.x/output/wrrPaperTestCases/figure01/vegImpactsRad_2006-2007_pysumma_demo_1.nc').open_netcdf()
+>>> P = Plotting('/home/hydro/Downloads/summaTestCases_2.x/output/wrrPaperTestCases/figure01/vegImpactsRad_2006-2007_pysumma_demo_1.nc')
 ```
 **3.)**  open and read netCDF file and create plot_info attribute
 ```python
->>>P_info = P.open_netcdf()
+>>> P_info = P.open_netcdf()
 ```
 **4.)**  Display 1D (time, variable)
 ```python
@@ -202,7 +205,7 @@ variable = [['basin__SurfaceRunoff','2'],['basin__ColumnOutflow','3'],
 			['averageInstantRunoff', '8'], ['averageRoutedRunoff', '9']]
 ```
 ```python
->>>P.plot_1d(P_info, 5)
+>>> P.plot_1d(P_info, 5)
 ```
 **5.)**  Display 1D (time, hru_num, variable_num_Y)
 ```python
@@ -216,7 +219,7 @@ variable_num_Y = [['pptrate','0'],['airtemp','1'], ['nSnow','10'], ['nSoil','11'
                   ['scalarExfiltration','34'],['scalarSurfaceRunoff','35']]
 ```
 ```python
->>>P.plot_1d_hru(P_info, 0, 17)
+>>> P.plot_1d_hru(P_info, 0, 17)
 ```
 **6.)**  Display 1D (time, hru_num, variable_num_Y, layer_time)
 ```python
@@ -228,7 +231,7 @@ layer_time = [['midSoilStartIndex','13'], ['midTotoStartIndex','14'],
               ['ifcSoilStartIndex','15'], ['ifcTotoStartIndex','16']]             
 ```
 ```python
->>>P.plot_1d_layer(P_info, 0, 26, 14)
+>>> P.plot_1d_layer(P_info, 0, 26, 14)
 ```
 
 ** Display plot from summa_plot created by andrew bennett from UW ** 
