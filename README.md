@@ -15,7 +15,7 @@
  - Get and set model parameters(Decision and fileManager file) (in progress)
  - Run SUMMA Model (in progress)
  - Visualize netCDF outputs (in progress)
- - Automate model calibration or sensitivity studies (in progress)
+ - Automate model calibration or sensitivity studies (Future work)
  - Operate pysumma with jupyter notebook environment in Hydroshare (Future work)
 
 ## Installation and Usage
